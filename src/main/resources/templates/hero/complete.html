@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>完了画面</title>
+  <link th:href="@{/webjars/foundation/6.4.2/dist/css/foundation.min.css}" rel="stylesheet"/>
+  <script th:src="@{/webjars/foundation/6.4.2/dist/js/foundation.min.js}"></script>
+  <script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+</head>
+<body>
+<div class="grid-container">
+  <div class="grid-y medium-grid-frame">
+    <div class="cell shrink header medium-cell-block-container">
+      <div class="grid-x grid-padding-x callout">
+        <div class="cell medium-1">
+          <img th:src="@{/image/hero.png}" th:width="33" th:height="54"/>
+        </div>
+        <div class="cell medium-11">
+          <h3>event list</h3>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-auto medium-cell-block-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3 medium-cell-block-y">
+          <div class="callout secondary">
+            <h4>menu</h4>
+            <ul class="vertical menu">
+              <li><a th:href="@{/hero/events}">event list</a></li>
+              <li><a th:href="@{/hero/input}">event input</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cell medium-9 medium-cell-block-y">
+          <span th:text="${message}"></span>
+        </div>
+      </div>
+    </div>
+    <div class="cell shrink footer">
+      copylight 2017
+    </div>
+  </div>
+</div>
+</body>
+</html>

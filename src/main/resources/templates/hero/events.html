@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Heroイベント一覧</title>
+  <link th:href="@{/webjars/foundation/6.4.2/dist/css/foundation.min.css}" rel="stylesheet"/>
+  <script th:src="@{/webjars/foundation/6.4.2/dist/js/foundation.min.js}"></script>
+  <script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-y medium-grid-frame">
+      <div class="cell shrink header medium-cell-block-container">
+        <div class="grid-x grid-padding-x callout">
+          <div class="cell medium-1">
+            <img th:src="@{/image/hero.png}" th:width="33" th:height="54"/>
+          </div>
+          <div class="cell medium-11">
+            <h3>event list</h3>
+          </div>
+        </div>
+      </div>
+      <div class="cell medium-auto medium-cell-block-container">
+        <div class="grid-x grid-margin-x">
+          <div class="cell medium-3 medium-cell-block-y">
+            <div class="callout secondary">
+              <h4>menu</h4>
+              <ul class="vertical menu">
+                <li><a th:href="@{/hero/events}">event list</a></li>
+                <li><a th:href="@{/hero/input}">event input</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="cell medium-9 medium-cell-block-y">
+            <form action="events" method="get">
+              <label>
+                event id<input type="text" placeholder="please input event id" th:field="*{eventForm.eventId}"/>
+                <span th:if="${#fields.hasErrors('eventForm.eventId')}" th:errors="*{eventForm.eventId}"></span>
+              </label>
+              <div style="text-align: center">
+                <button type="submit" class="hollow button secondary">search</button>
+              </div>
+            </form>
+            <table>
+              <thead>
+              <tr>
+                <th>event_id</th>
+                <th>object_name</th>
+                <th>procedure</th>
+                <th>scene_name</th>
+                <th>seq</th>
+                <th>type_id</th>
+                <th>attr1</th>
+                <th>attr2</th>
+              </tr>
+              </thead>
+              <tbody>
+              <th:block th:each="event: ${events}">
+                <tr th:each="eventDetail: ${event.eventDetails}">
+                  <td th:text="${event.eventId}"></td>
+                  <td th:text="${event.objectName}"></td>
+                  <td th:text="${event.procedure}"></td>
+                  <td th:text="${event.sceneName}"></td>
+                  <td th:text="${eventDetail.eventDetailId.seq}"></td>
+                  <td th:text="${eventDetail.eventDetailId.typeId}"></td>
+                  <td th:text="${eventDetail.attr1}"></td>
+                  <td th:text="${eventDetail.attr2}"></td>
+                </tr>
+              </th:block>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="cell shrink footer">
+        copylight 2017
+      </div>
+    </div>
+  </div>
+</body>
+</html>

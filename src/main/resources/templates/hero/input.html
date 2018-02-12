@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Heroイベント登録</title>
+  <link th:href="@{/webjars/foundation/6.4.2/dist/css/foundation.min.css}" rel="stylesheet"/>
+  <script th:src="@{/webjars/foundation/6.4.2/dist/js/foundation.min.js}"></script>
+  <script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+</head>
+<body>
+<div class="grid-container">
+  <div class="grid-y medium-grid-frame">
+    <div class="cell shrink header medium-cell-block-container">
+      <div class="grid-x grid-padding-x callout">
+        <div class="cell medium-1">
+          <img th:src="@{/image/hero.png}" th:width="33" th:height="54"/>
+        </div>
+        <div class="cell medium-11">
+          <h3>event list</h3>
+        </div>
+      </div>
+    </div>
+    <div class="cell medium-auto medium-cell-block-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-3 medium-cell-block-y">
+          <div class="callout secondary">
+            <h4>menu</h4>
+            <ul class="vertical menu">
+              <li><a th:href="@{/hero/events}">event list</a></li>
+              <li><a th:href="@{/hero/input}">event input</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cell medium-9 medium-cell-block-y">
+          <form action="confirm" method="post" th:object="${eventForm}">
+            <label>
+              event id<input type="text" placeholder="please input event id" th:field="*{eventId}"/>
+              <span th:if="${#fields.hasErrors('eventId')}" th:errors="*{eventId}"></span>
+            </label>
+            <label>
+              object name<input type="text" placeholder="please input object name" th:field="*{objectName}"/>
+              <span th:if="${#fields.hasErrors('objectName')}" th:errors="*{objectName}"></span>
+            </label>
+            <label>
+              procedure<input type="text" placeholder="please input procedure" th:field="*{procedure}"/>
+              <span th:if="${#fields.hasErrors('procedure')}" th:errors="*{procedure}"></span>
+            </label>
+            <label>
+              scene name<input type="text" placeholder="please input scene name" th:field="*{sceneName}"/>
+              <span th:if="${#fields.hasErrors('sceneName')}" th:errors="*{sceneName}"></span>
+            </label>
+            <label>
+              input date<input type="text" placeholder="please input insert date" th:field="*{insertDate}"/>
+              <span th:if="${#fields.hasErrors('insertDate')}" th:errors="*{insertDate}"></span>
+            </label>
+            <div style="text-align: center">
+              <button type="submit" class="hollow button secondary">create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cell shrink footer">
+      copylight 2017
+    </div>
+  </div>
+</div>
+</body>
+</html>
